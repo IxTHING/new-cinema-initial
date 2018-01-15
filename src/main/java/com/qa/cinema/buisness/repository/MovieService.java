@@ -31,9 +31,17 @@ public class MovieService {
 		return movie;
 	}
 	
+	@Transactional(Transactional.TxType.REQUIRED)
+	public Movie createMovie(String movie)
+	{
+		Movie newMovie = jsonUtil.getObjectForJSON(movie, Movie.class);
+		em.persist(newMovie);
+		return newMovie;
+	}
+	
 	public List<Movie> findAllMovies()
 	{
-		TypedQuery<Movie> query = em.createQuery("SELECT * FROM Movie", Movie.class);
+		TypedQuery<Movie> query = em.createQuery("SELECT m FROM Movie m", Movie.class);
         return query.getResultList();
 	}
 	

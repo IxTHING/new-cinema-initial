@@ -13,11 +13,23 @@ public class Movie {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	public Movie(Long id, String title, String genre, String ageRating) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.genre = genre;
+		this.ageRating = ageRating;
+	}
+
 	@Column(length = 100)
 	private String title;
 	
+	public Movie() {
+		super();
+	}
+
 	@Column(length = 50)
-	private String Genre;
+	private String genre;
 	
 	@Column(length = 4)
 	private String ageRating;
@@ -35,11 +47,11 @@ public class Movie {
 	}
 
 	public String getGenre() {
-		return Genre;
+		return genre;
 	}
 
 	public void setGenre(String genre) {
-		Genre = genre;
+		this.genre = genre;
 	}
 
 	public String getAgeRating() {
@@ -54,7 +66,7 @@ public class Movie {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Genre == null) ? 0 : Genre.hashCode());
+		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
 		result = prime * result + ((ageRating == null) ? 0 : ageRating.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -70,10 +82,10 @@ public class Movie {
 		if (getClass() != obj.getClass())
 			return false;
 		Movie other = (Movie) obj;
-		if (Genre == null) {
-			if (other.Genre != null)
+		if (genre == null) {
+			if (other.genre != null)
 				return false;
-		} else if (!Genre.equals(other.Genre))
+		} else if (!genre.equals(other.genre))
 			return false;
 		if (ageRating == null) {
 			if (other.ageRating != null)
